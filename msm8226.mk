@@ -15,8 +15,8 @@
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    device/samsung/msm8226-common/overlay \
-    device/samsung/msm8226-common/overlay-lineage
+    device/lenovo/msm8226-common/overlay \
+    device/lenovo/msm8226-common/overlay-lineage
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -130,14 +130,14 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.samsung-qcom
+    vendor.lineage.livedisplay@2.0-service.lenovo-qcom
 
 # Media
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml \
-    device/samsung/msm8226-common/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
+    device/lenovo/msm8226-common/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
 
 # Network - Do not spin up a separate process for the network stack, use an in-process APK.
 PRODUCT_PACKAGES += \
@@ -192,8 +192,8 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl.samsung8226 \
-    android.hardware.sensors@1.0-service.samsung8226
+    android.hardware.sensors@1.0-impl.lenovo8226 \
+    android.hardware.sensors@1.0-service.lenovo8226
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -236,7 +236,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prima/WCNSS_qcom_wlan_nv.bin:$(TARGET_COPY_OUT_SYSTEM)/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 # Get non-open-source specific aspects
-$(call inherit-product, vendor/samsung/msm8226-common/msm8226-common-vendor.mk)
+$(call inherit-product, vendor/lenovo/msm8226-common/msm8226-common-vendor.mk)
 
 # common msm8226
-$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
+$(call inherit-product, device/lenovo/qcom-common/qcom-common.mk)

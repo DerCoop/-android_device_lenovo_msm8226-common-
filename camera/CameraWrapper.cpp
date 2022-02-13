@@ -46,6 +46,7 @@ using android::base::GetProperty;
 
 enum {
     UNKNOWN = -1,
+    B8080F,
     S3VE3G,
     KMINI3G,
     MS01,
@@ -56,7 +57,7 @@ enum {
 static int product_device = UNKNOWN;
 
 const char KEY_SUPPORTED_ISO_MODES[] = "iso-values";
-const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
+const char KEY_LENOVO_CAMERA_MODE[] = "cam_mode";
 const char KEY_ISO_MODE[] = "iso";
 const char KEY_ZSL[] = "zsl";
 static const char OFF[] = "off";
@@ -92,7 +93,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
             .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
             .hal_api_version = HARDWARE_HAL_API_VERSION,
             .id = CAMERA_HARDWARE_MODULE_ID,
-            .name = "Samsung msm8226 Camera Wrapper",
+            .name = "Lenovo msm8226 Camera Wrapper",
             .author = "The CyanogenMod Project",
             .methods = &camera_module_methods,
             .dso = NULL,     /* remove compilation warnings */
@@ -116,7 +117,9 @@ static int get_product_device()
 
     std::string device = GetProperty("ro.product.device", "");
 
-    if (device == "s3ve3gxx")
+    if (device == "b8080f")
+        product_device = B8080F;
+    else if (device == "s3ve3gxx")
         product_device = S3VE3G;
     else if (device == "s3ve3gjv")
         product_device = S3VE3G;
@@ -273,7 +276,7 @@ static char* camera_fixup_setparams(struct camera_device* device, const char* se
     int id = CAMERA_ID(device);
     CameraParameters params;
     params.unflatten(String8(settings));
-    const char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
+    const char* camMode = params.get(KEY_LENOVO_CAMERA_MODE);
 
     const char* recordingHint = params.get(CameraParameters::KEY_RECORDING_HINT);
     bool isVideo = false;
